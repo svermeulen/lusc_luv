@@ -6,8 +6,8 @@ source = {
    branch = "main"
 }
 description = {
-   summary = "Structured Async/Concurrency for Lua",
-   detailed = "Structured Async/Concurrency for Lua",
+   summary = "Structured Async/Concurrency for Lua using Luv",
+   detailed = "Structured Async/Concurrency for Lua using Luv",
    homepage = "https://github.com/svermeulen/lusc_luv",
    license = "MIT"
 }
