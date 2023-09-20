@@ -19,7 +19,7 @@ dependencies = {
 build = {
    type = "builtin",
    modules = {
-      -- lusc = "gen/lusc/init.lua"
-      -- ["lusc.util"] = "gen/lusc/util.lua"
+      lusc_luv = "gen/lusc_luv/init.lua",
+      ["lusc_luv.background_runner"] = "gen/lusc_luv/background_runner.lua"
    },
 }
