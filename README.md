@@ -1,12 +1,14 @@
 
 # Lusc Luv - Structured Async/Concurrency for Lua, using Luv
 
-`lusc_luv` provides some simple code that handles [Lusc](https://github.com/svermeulen/lusc) initialization using functionality from [Luv](https://github.com/luvit/luv)
+This library just provides some simple code that handles [Lusc](https://github.com/svermeulen/lusc) initialization using functionality from [Luv](https://github.com/luvit/luv)
 
 See the [Lusc](https://github.com/svermeulen/lusc) docs first before reading this
 
-Simple Example
+Simple Examples
 ---
+
+When running LuscLuv, you can either execute it in a blocking or non-blocking way.  The following example shows how to run it in a blocking way by calling `lusc_luv.run`:
 
 ```lua
 local lusc = require("lusc")
@@ -38,6 +40,10 @@ end
 
 lusc_luv.run(main)
 ```
+
+In the above code, lua execution will block on the line `lusc_luv.run(main)` until all tasks within `main` have fully completed.  Internally, `lusc_luv` calls `luv.sleep` when it is waiting to execute future tasks, which means that if there's any other code that is running on top of the Luv event loop, it will be blocked until the `lusc_luv.run` completes.
+
+To address this problem for these cases, we also provide `lusc_luv.run_in_background`.  For example:
 
 API Reference
 ---
