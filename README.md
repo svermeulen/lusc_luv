@@ -1,6 +1,9 @@
 
-Lusc Luv - Structured Concurrency for Lua on top of Luv
------
+# Lusc Luv - Structured Async/Concurrency for Lua, using Luv
 
-This library provides some simple code that hooks up Lusc for use with Luv.
+`lusc_luv` provides some simple code that handles [Lusc](https://github.com/svermeulen/lusc) initialization using functionality from [Luv](https://github.com/luvit/luv)
+
+Simple Example
+---
+
 
