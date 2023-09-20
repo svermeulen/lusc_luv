@@ -1,6 +1,6 @@
 
 return {
   default = {
-    helper = 'lusc.tests.setup'
+    helper = 'lusc_luv.tests.setup'
   }
 }
