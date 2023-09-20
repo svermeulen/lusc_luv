@@ -43,7 +43,7 @@ end
 lusc_luv.run(main)
 ```
 
-In the above code, lua execution will block on the line `lusc_luv.run(main)` until all tasks within `main` have fully completed.  Internally, `lusc_luv` calls `luv.sleep` when it is waiting to execute future tasks, which means that if there's any other code that is running on top of the Luv event loop, it will be blocked until the `lusc_luv.run` completes.
+In the above code, lua execution will block on the line `lusc_luv.run(main)` until all tasks within `main` have fully completed.  Internally, `lusc_luv` calls `luv.sleep` when it is waiting to execute future tasks, which means that if there's any other code that is running on top of the Luv event loop, it will be blocked until `lusc_luv.run` completes.
 
 To address this problem for these cases, we also provide `lusc_luv.run_in_background`.  For example:
 
