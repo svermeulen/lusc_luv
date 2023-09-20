@@ -13,6 +13,8 @@ description = {
 }
 dependencies = {
    "lua >= 5.1",
+   "lusc",
+   "luv",
 }
 build = {
    type = "builtin",
