@@ -7,6 +7,11 @@ This library just provides some simple code that handles [Lusc](https://github.c
 
 See the [Lusc](https://github.com/svermeulen/lusc) docs first before reading this
 
+Installation
+---
+
+`luarocks install lusc_luv`
+
 Simple Examples
 ---
 
