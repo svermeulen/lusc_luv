@@ -1,6 +1,6 @@
 rockspec_format = "3.0"
 package = "lusc_luv"
-version = "1.0.0-2"
+version = "2.0.0-1"
 source = {
    url = "git+https://github.com/svermeulen/lusc_luv.git",
    branch = "main"
@@ -20,6 +20,5 @@ build = {
    type = "builtin",
    modules = {
       lusc_luv = "gen/lusc_luv/init.lua",
-      ["lusc_luv.background_runner"] = "gen/lusc_luv/background_runner.lua"
    },
 }

@@ -25,22 +25,22 @@ describe("lusc", function()
 
    it("await_until_time", function()
       run(function()
-         local start_time = lusc.get_current_time()
+         local start_time = lusc.get_time()
          lusc.await_until_time(start_time + test_time_interval)
-         local elapsed = lusc.get_current_time() - start_time
+         local elapsed = lusc.get_time() - start_time
          util.assert(elapsed > test_time_interval and elapsed < 2 * test_time_interval)
       end)
    end)
 
    it("simple nursery", function()
       run(function()
-         local start_time = lusc.get_current_time()
+         local start_time = lusc.get_time()
          local end_time = nil
 
          lusc.open_nursery(function(nursery)
             nursery:start_soon(function()
                lusc.await_sleep(test_time_interval)
-               end_time = lusc.get_current_time()
+               end_time = lusc.get_time()
             end)
          end)
 
@@ -50,19 +50,19 @@ describe("lusc", function()
 
    it("tasks run concurrently", function()
       run(function()
-         local start_time = lusc.get_current_time()
+         local start_time = lusc.get_time()
          local end_time_1 = nil
          local end_time_2 = nil
 
          lusc.open_nursery(function(nursery)
             nursery:start_soon(function()
                lusc.await_sleep(test_time_interval)
-               end_time_1 = lusc.get_current_time()
+               end_time_1 = lusc.get_time()
             end)
 
             nursery:start_soon(function()
                lusc.await_sleep(test_time_interval)
-               end_time_2 = lusc.get_current_time()
+               end_time_2 = lusc.get_time()
             end)
          end)
 
@@ -87,7 +87,7 @@ describe("lusc", function()
 
    it("simple event usage", function()
       run(function()
-         local start_time = lusc.get_current_time()
+         local start_time = lusc.get_time()
          local num_completed = 0
          lusc.open_nursery(function(nursery)
             local event = lusc.new_event()
@@ -95,14 +95,14 @@ describe("lusc", function()
             nursery:start_soon(function()
                util.assert(not event.is_set)
                event:await()
-               local elapsed = lusc.get_current_time() - start_time
+               local elapsed = lusc.get_time() - start_time
                util.assert(elapsed > test_time_interval and elapsed < 2 * test_time_interval)
                num_completed = num_completed + 1
             end)
             nursery:start_soon(function()
                util.assert(not event.is_set)
                event:await()
-               local elapsed = lusc.get_current_time() - start_time
+               local elapsed = lusc.get_time() - start_time
                util.assert(elapsed > test_time_interval and elapsed < 2 * test_time_interval)
                num_completed = num_completed + 1
             end)
@@ -123,7 +123,7 @@ describe("lusc", function()
          local schedule_order = {}
 
          lusc.open_nursery(function(nursery)
-            local start_time = lusc.get_current_time()
+            local start_time = lusc.get_time()
             local stop_time = start_time + test_time_interval
 
             nursery:start_soon(function()
@@ -182,13 +182,13 @@ describe("lusc", function()
    it("disallow use not under a lusc.run", function()
       util.assert_throws(function() lusc.await_sleep(test_time_interval) end)
       util.assert_throws(function() lusc.new_event() end)
-      util.assert_throws(function() lusc.await_until_time(lusc.get_current_time() + test_time_interval) end)
+      util.assert_throws(function() lusc.await_until_time(lusc.get_time() + test_time_interval) end)
       util.assert_throws(function() lusc.open_nursery(function(_) end) end)
    end)
 
    it("explicit cancel ends sub tasks", function()
       run(function()
-         local start_time = lusc.get_current_time()
+         local start_time = lusc.get_time()
          local child_2_finished = false
 
          lusc.open_nursery(function(nursery)
@@ -201,7 +201,7 @@ describe("lusc", function()
             end)
          end)
 
-         local elapsed = lusc.get_current_time() - start_time
+         local elapsed = lusc.get_time() - start_time
          util.assert(elapsed > test_time_interval and elapsed < 2 * test_time_interval)
          util.assert(not child_2_finished)
       end)
@@ -209,7 +209,7 @@ describe("lusc", function()
 
    it("explicit cancel ends direct waits", function()
       run(function()
-         local start_time = lusc.get_current_time()
+         local start_time = lusc.get_time()
          local child_2_finished = false
 
          lusc.open_nursery(function(nursery)
@@ -220,7 +220,7 @@ describe("lusc", function()
             lusc.await_sleep(10 * test_time_interval)
          end)
 
-         local elapsed = lusc.get_current_time() - start_time
+         local elapsed = lusc.get_time() - start_time
          util.assert(elapsed > test_time_interval and elapsed < 2 * test_time_interval)
          util.assert(not child_2_finished)
       end)
