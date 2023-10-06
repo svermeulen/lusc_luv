@@ -50,7 +50,7 @@ lusc_luv.run(main)
 
 In the above code, lua execution will block on the line `lusc_luv.run(main)` until all tasks within `main` have fully completed.  Internally, `lusc_luv` calls `luv.sleep` when it is waiting to execute future tasks, which means that if there's any other code that is running on top of the Luv event loop, it will be blocked until `lusc_luv.run` completes.
 
-This means that if you want to use luv for other things in addition to the lusc bindings, then you shouldn't use this library.
+This means that if you want to use luv for other things in addition to the lusc bindings, then you shouldn't use this library.  There is a work-in-progress alternative to this library [here](https://github.com/svermeulen/lusc_luv_bg) that implements lusc without using sleep and instead uses luv timers, which is what you'll want to use instead.
 
 API Reference
 ---
