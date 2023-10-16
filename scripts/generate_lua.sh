@@ -12,3 +12,5 @@ cp src/lusc/internal/queue.lua gen/lusc/internal/queue.lua
 tl gen src/lusc/tests/async_helper.tl -o gen/lusc/tests/async_helper.lua
 tl gen src/lusc/tests/lusc_spec.tl -o gen/lusc/tests/lusc_spec.lua
 tl gen src/lusc/tests/setup.tl -o gen/lusc/tests/setup.lua
+tl gen src/lusc/luv_async.tl -o gen/lusc/luv_async.lua
+tl gen src/lusc/tests/luv_async_spec.tl -o gen/lusc/tests/luv_async_spec.lua
