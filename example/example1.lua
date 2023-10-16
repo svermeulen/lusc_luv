@@ -1,6 +1,5 @@
 
 local lusc = require("lusc")
-local lusc_luv = require("lusc_luv")
 
 local function main()
    print("Waiting 1 second...")
@@ -26,4 +25,4 @@ local function main()
    print("Completed all child tasks")
 end
 
-lusc_luv.run(main)
+lusc.run(main)

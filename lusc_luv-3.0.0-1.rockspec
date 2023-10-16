@@ -1,6 +1,6 @@
 rockspec_format = "3.0"
 package = "lusc_luv"
-version = "2.0.0-1"
+version = "3.0.0-1"
 source = {
    url = "git+https://github.com/svermeulen/lusc_luv.git",
    branch = "main"
@@ -13,12 +13,13 @@ description = {
 }
 dependencies = {
    "lua >= 5.1",
-   "lusc",
    "luv",
 }
 build = {
    type = "builtin",
    modules = {
-      lusc_luv = "gen/lusc_luv/init.lua",
+      lusc = "gen/lusc/init.lua",
+      ["lusc.util"] = "gen/lusc/internal/util.lua"
+      ["lusc.queue"] = "gen/lusc/internal/queue.lua"
    },
 }

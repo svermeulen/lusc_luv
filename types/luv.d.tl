@@ -60,7 +60,7 @@ local record uv
       fileno:function(Timer):integer, string
       get_type:function(Timer):string, integer
 
-      start:function(Timer, timeout:integer, rep:integer, callback:function()):integer, string
+      start:function(Timer, timeout:number, rep:integer, callback:function()):integer, string
       stop:function(Timer):integer, string
       again:function(Timer):integer, string
       set_repeat:function(Timer, rep:integer)
