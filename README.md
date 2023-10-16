@@ -208,8 +208,6 @@ local record lusc
 
    get_running_task:function():Task
    try_get_running_task:function():Task
-
-   set_impl:function(any)
 end
 ```
 
