@@ -20,6 +20,6 @@ build = {
    modules = {
       lusc = "gen/lusc/init.lua",
       ["lusc.internal.util"] = "gen/lusc/internal/util.lua",
-      ["lusc.queue"] = "gen/lusc/internal/queue.lua",
+      ["lusc.internal.queue"] = "gen/lusc/internal/queue.lua",
    },
 }
