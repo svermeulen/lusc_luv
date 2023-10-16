@@ -19,6 +19,11 @@ Differences with Lusc
 
 2. There are no entry point functions passed to `lusc.start`.  Instead, every time you want to run something underneath `lusc`, you call `lusc.schedule`, which will cause your function to run the next event loop iteration.  Long running async tasks can also check the `lusc.stop_requested()` method and then gracefully shut down.
 
+Usage with Luv API
+---
+
+Luv has many async methods which require that a callback function be passed in as a parameter.   lusc_luv therefore comes with an adapter class that converts these methods to lusc-style await methods instead.  So instead of calling `luv.fs_open(path, flags, mode, callback)` you can import `luv_async` and then call `luv_async.await_open(path, flags, mode)`.  For more examples, see `luv_async_spec.tl`
+
 API Reference
 ---
 
