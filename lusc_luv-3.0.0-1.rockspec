@@ -19,7 +19,7 @@ build = {
    type = "builtin",
    modules = {
       lusc = "gen/lusc/init.lua",
-      ["lusc.util"] = "gen/lusc/internal/util.lua"
-      ["lusc.queue"] = "gen/lusc/internal/queue.lua"
+      ["lusc.util"] = "gen/lusc/internal/util.lua",
+      ["lusc.queue"] = "gen/lusc/internal/queue.lua",
    },
 }
