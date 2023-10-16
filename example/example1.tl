@@ -1,6 +1,6 @@
 
 local lusc <const> = require("lusc")
-local lusc_luv <const> = require("lusc_luv")
+local uv <const> = require("luv")
 
 local function main()
    print("Waiting 1 second...")
@@ -15,6 +15,7 @@ local function main()
          lusc.await_sleep(1)
          print("Completed child 1")
       end)
+
       nursery:start_soon(function()
          print("Child 2 started.  Waiting 1 second...")
          lusc.await_sleep(1)
@@ -26,4 +27,20 @@ local function main()
    print("Completed all child tasks")
 end
 
-lusc_luv.run(main)
+lusc.start({
+   generate_debug_names = true,
+   on_completed = function(e:lusc.ErrorGroup)
+      if e then
+         print("Lusc failed: " .. tostring(e))
+      end
+   end,
+})
+
+lusc.schedule(main)
+
+-- This will stop when there are no more tasks to run
+lusc.stop()
+
+assert(uv.loop_mode() == nil)
+local result, err = uv.run()
+assert(result == false, err)
