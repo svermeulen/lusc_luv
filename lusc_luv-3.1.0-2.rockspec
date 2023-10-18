@@ -1,6 +1,6 @@
 rockspec_format = "3.0"
 package = "lusc_luv"
-version = "3.1.0-1"
+version = "3.1.0-2"
 source = {
    url = "git+https://github.com/svermeulen/lusc_luv.git",
    branch = "main"
