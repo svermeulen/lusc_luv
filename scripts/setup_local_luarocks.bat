@@ -26,6 +26,9 @@ call luarocks install busted --tree=!LUAROCKS_TREE!
 echo Installing tl for local building...
 call luarocks install tl --tree=!LUAROCKS_TREE!
 
+echo Installing tlcheck for linting...
+call luarocks install tlcheck --tree=!LUAROCKS_TREE!
+
 rem Confirm installations
 echo Installed LuaRocks packages:
 call luarocks list --tree=!LUAROCKS_TREE!

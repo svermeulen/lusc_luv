@@ -17,6 +17,9 @@ luarocks make --tree="$LUAROCKS_TREE"
 echo "Installing busted for local testing..."
 luarocks install busted --tree="$LUAROCKS_TREE"
 
+echo "Installing tlcheck for linting..."
+luarocks install tlcheck --tree="$LUAROCKS_TREE"
+
 # Confirm installations
 echo "Installed LuaRocks packages:"
 luarocks list --tree="$LUAROCKS_TREE"
