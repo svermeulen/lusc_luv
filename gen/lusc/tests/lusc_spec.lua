@@ -175,7 +175,7 @@ describe("lusc", function()
          local start_time = lusc.get_time()
          local num_completed = 0
          lusc.open_nursery(function(nursery)
-            local event = lusc.new_event()
+            local event = lusc.new_sticky_event()
             util.assert(not event.is_set)
             nursery:start_soon(function()
                util.assert(not event.is_set)

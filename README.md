@@ -170,7 +170,8 @@ local record lusc
    await_sleep:function(seconds:number)
    await_until:function(until_time:number)
    await_forever:function()
-   new_event:function():Event
+   new_sticky_event:function():Event
+   new_pulse_event:function():Event
    start:function(opts:Opts)
 
    -- Note that this will only cancel tasks if one of the move_on* or fail_* options

@@ -22,13 +22,13 @@ local luv_async = {Directory = {}, FileInfo = {}, }
 
 
 function luv_async.await_close(fd)
-   local event = lusc.new_event()
+   local event = lusc.new_sticky_event()
    assert(uv.fs_close(fd, function() event:set() end))
    event:await()
 end
 
 function luv_async.await_open(path, flags, mode)
-   local event = lusc.new_event()
+   local event = lusc.new_sticky_event()
    local fd
    local err
 
@@ -51,7 +51,7 @@ end
 
 
 function luv_async.await_read(fd, size, offset)
-   local event = lusc.new_event()
+   local event = lusc.new_sticky_event()
    local result
    local err
 
@@ -67,7 +67,7 @@ function luv_async.await_read(fd, size, offset)
 end
 
 function luv_async.await_unlink(path)
-   local event = lusc.new_event()
+   local event = lusc.new_sticky_event()
    local result
    local err
 
@@ -83,7 +83,7 @@ function luv_async.await_unlink(path)
 end
 
 function luv_async.await_write(fd, data, offset)
-   local event = lusc.new_event()
+   local event = lusc.new_sticky_event()
    local result
    local err
 
@@ -99,7 +99,7 @@ function luv_async.await_write(fd, data, offset)
 end
 
 function luv_async.await_mkdir(path, mode)
-   local event = lusc.new_event()
+   local event = lusc.new_sticky_event()
    local result
    local err
 
@@ -115,7 +115,7 @@ function luv_async.await_mkdir(path, mode)
 end
 
 function luv_async.await_mkdtemp(template)
-   local event = lusc.new_event()
+   local event = lusc.new_sticky_event()
    local result
    local err
 
@@ -131,7 +131,7 @@ function luv_async.await_mkdtemp(template)
 end
 
 function luv_async.await_mkstemp(template)
-   local event = lusc.new_event()
+   local event = lusc.new_sticky_event()
    local result
    local err
 
@@ -147,7 +147,7 @@ function luv_async.await_mkstemp(template)
 end
 
 function luv_async.await_rmdir(path)
-   local event = lusc.new_event()
+   local event = lusc.new_sticky_event()
    local result
    local err
 
@@ -163,7 +163,7 @@ function luv_async.await_rmdir(path)
 end
 
 function luv_async.try_await_stat(path)
-   local event = lusc.new_event()
+   local event = lusc.new_sticky_event()
    local result
    assert(uv.fs_stat(path, function(_, r)
       result = r
@@ -174,7 +174,7 @@ function luv_async.try_await_stat(path)
 end
 
 function luv_async.await_stat(path)
-   local event = lusc.new_event()
+   local event = lusc.new_sticky_event()
    local result
    local err
 
@@ -190,7 +190,7 @@ function luv_async.await_stat(path)
 end
 
 function luv_async.await_fstat(fd)
-   local event = lusc.new_event()
+   local event = lusc.new_sticky_event()
    local result
    local err
 
@@ -206,7 +206,7 @@ function luv_async.await_fstat(fd)
 end
 
 function luv_async.await_lstat(path)
-   local event = lusc.new_event()
+   local event = lusc.new_sticky_event()
    local result
    local err
 
@@ -222,7 +222,7 @@ function luv_async.await_lstat(path)
 end
 
 function luv_async.await_rename(path, new_path)
-   local event = lusc.new_event()
+   local event = lusc.new_sticky_event()
    local result
    local err
 
@@ -238,7 +238,7 @@ function luv_async.await_rename(path, new_path)
 end
 
 function luv_async.await_fsync(fd)
-   local event = lusc.new_event()
+   local event = lusc.new_sticky_event()
    local result
    local err
 
@@ -254,7 +254,7 @@ function luv_async.await_fsync(fd)
 end
 
 function luv_async.await_fdatasync(fd)
-   local event = lusc.new_event()
+   local event = lusc.new_sticky_event()
    local result
    local err
 
@@ -270,7 +270,7 @@ function luv_async.await_fdatasync(fd)
 end
 
 function luv_async.await_ftruncate(fd, offset)
-   local event = lusc.new_event()
+   local event = lusc.new_sticky_event()
    local result
    local err
 
@@ -286,7 +286,7 @@ function luv_async.await_ftruncate(fd, offset)
 end
 
 function luv_async.await_sendfile(out_fd, in_fd, in_offset, size)
-   local event = lusc.new_event()
+   local event = lusc.new_sticky_event()
    local result
    local err
 
@@ -302,7 +302,7 @@ function luv_async.await_sendfile(out_fd, in_fd, in_offset, size)
 end
 
 function luv_async.await_access(path, mode)
-   local event = lusc.new_event()
+   local event = lusc.new_sticky_event()
    local result
    local err
 
@@ -318,7 +318,7 @@ function luv_async.await_access(path, mode)
 end
 
 function luv_async.await_chmod(path, mode)
-   local event = lusc.new_event()
+   local event = lusc.new_sticky_event()
    local result
    local err
 
@@ -334,7 +334,7 @@ function luv_async.await_chmod(path, mode)
 end
 
 function luv_async.await_fchmod(fd, mode)
-   local event = lusc.new_event()
+   local event = lusc.new_sticky_event()
    local result
    local err
 
@@ -350,7 +350,7 @@ function luv_async.await_fchmod(fd, mode)
 end
 
 function luv_async.await_utime(path, atime, mtime)
-   local event = lusc.new_event()
+   local event = lusc.new_sticky_event()
    local result
    local err
 
@@ -366,7 +366,7 @@ function luv_async.await_utime(path, atime, mtime)
 end
 
 function luv_async.await_futime(fd, atime, mtime)
-   local event = lusc.new_event()
+   local event = lusc.new_sticky_event()
    local result
    local err
 
@@ -382,7 +382,7 @@ function luv_async.await_futime(fd, atime, mtime)
 end
 
 function luv_async.await_lutime(path, atime, mtime)
-   local event = lusc.new_event()
+   local event = lusc.new_sticky_event()
    local result
    local err
 
@@ -398,7 +398,7 @@ function luv_async.await_lutime(path, atime, mtime)
 end
 
 function luv_async.await_link(path, new_path)
-   local event = lusc.new_event()
+   local event = lusc.new_sticky_event()
    local result
    local err
 
@@ -414,7 +414,7 @@ function luv_async.await_link(path, new_path)
 end
 
 function luv_async.await_symlink(path, new_path, flags)
-   local event = lusc.new_event()
+   local event = lusc.new_sticky_event()
    local result
    local err
 
@@ -430,7 +430,7 @@ function luv_async.await_symlink(path, new_path, flags)
 end
 
 function luv_async.await_readlink(path)
-   local event = lusc.new_event()
+   local event = lusc.new_sticky_event()
    local result
    local err
 
@@ -446,7 +446,7 @@ function luv_async.await_readlink(path)
 end
 
 function luv_async.await_realpath(path)
-   local event = lusc.new_event()
+   local event = lusc.new_sticky_event()
    local result
    local err
 
@@ -462,7 +462,7 @@ function luv_async.await_realpath(path)
 end
 
 function luv_async.await_chown(path, uid, gid)
-   local event = lusc.new_event()
+   local event = lusc.new_sticky_event()
    local result
    local err
 
@@ -478,7 +478,7 @@ function luv_async.await_chown(path, uid, gid)
 end
 
 function luv_async.await_fchown(fd, uid, gid)
-   local event = lusc.new_event()
+   local event = lusc.new_sticky_event()
    local result
    local err
 
@@ -494,7 +494,7 @@ function luv_async.await_fchown(fd, uid, gid)
 end
 
 function luv_async.await_lchown(fd, uid, gid)
-   local event = lusc.new_event()
+   local event = lusc.new_sticky_event()
    local result
    local err
 
@@ -510,7 +510,7 @@ function luv_async.await_lchown(fd, uid, gid)
 end
 
 function luv_async.await_copyfile(path, new_path, flags)
-   local event = lusc.new_event()
+   local event = lusc.new_sticky_event()
    local result
    local err
 
@@ -534,7 +534,7 @@ function luv_async.Directory.new(impl)
 end
 
 function luv_async.Directory:await_readdir()
-   local event = lusc.new_event()
+   local event = lusc.new_sticky_event()
    local result
    local err
 
@@ -555,7 +555,7 @@ function luv_async.Directory:await_readdir()
 end
 
 function luv_async.Directory:await_closedir()
-   local event = lusc.new_event()
+   local event = lusc.new_sticky_event()
    local result
    local err
 
@@ -574,7 +574,7 @@ function luv_async.await_opendir(path, entries)
    assert(path ~= nil)
    assert(entries ~= nil, "Must provide a value for entries")
 
-   local event = lusc.new_event()
+   local event = lusc.new_sticky_event()
    local result
    local err
 
@@ -590,7 +590,7 @@ function luv_async.await_opendir(path, entries)
 end
 
 function luv_async.await_statfs(path)
-   local event = lusc.new_event()
+   local event = lusc.new_sticky_event()
    local result
    local err
 

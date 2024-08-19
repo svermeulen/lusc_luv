@@ -1,6 +1,9 @@
 @echo off
 setlocal enabledelayedexpansion
 
+call %~dp0generate_lua.bat
+call %~dp0setup_local_luarocks.bat
+
 cd %~dp0\..
 
 set "REPO_ROOT=%~dp0..\"
@@ -19,6 +22,6 @@ rem Navigate to the gen directory
 cd gen
 
 rem Run busted using the local luarocks installation
-call !LUAROCKS_TREE!\bin\busted.bat . --config-file=..\busted_config.lua -v
+call !LUAROCKS_TREE!\bin\busted.bat . --config-file=..\busted_config.lua --verbose
 
 endlocal

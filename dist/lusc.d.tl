@@ -137,12 +137,13 @@ local record lusc
    await_sleep:function(seconds:number)
    await_until:function(until_time:number)
    await_forever:function()
-   new_event:function():Event
+   new_sticky_event:function():Event
+   new_pulse_event:function():Event
    start:function(opts:Opts)
 
    -- Note that this will only cancel tasks if one of the move_on* or fail_* options
    -- are provided.  Otherwise it will wait forever for tasks to complete gracefully
-   -- Note also that if block_until_stopped is provided, it will block 
+   -- Note also that if block_until_stopped is provided, it will block
    stop:function(opts:DeadlineOpts)
 
    -- Long running tasks can check this periodically, and then shut down
