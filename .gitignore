@@ -3,3 +3,6 @@
 /lua.bat
 /lua_modules
 /.luarocks
+/luarocks
+/luarocks_tree
+/lua
