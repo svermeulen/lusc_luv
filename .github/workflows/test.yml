@@ -26,5 +26,8 @@ jobs:
       - name: Build
         run: scripts/setup_local_luarocks.sh
 
-      - name: Test
+      - name: Lint
         run: scripts/lint_teal.sh
+
+      - name: Test
+        run: scripts/run_tests.sh
