@@ -1,8 +1,8 @@
 @echo off
 setlocal enabledelayedexpansion
 
-call %~dp0generate_lua.bat
 call %~dp0setup_local_luarocks.bat
+call %~dp0generate_lua.bat
 
 cd %~dp0\..
 

@@ -1,8 +1,8 @@
 #!/bin/bash
 set -e
 
-./generate_lua.sh
 ./setup_local_luarocks.sh
+./generate_lua.sh
 
 # Navigate to the root of the repo
 cd "$(dirname "$0")/.."
