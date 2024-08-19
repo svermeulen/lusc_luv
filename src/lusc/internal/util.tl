@@ -23,6 +23,16 @@ function util.log(format:string, ...:any)
    end
 end
 
+function util.map_get_keys<K, V>(values:{K:V}):{K}
+   local result:{K} = {}
+
+   for k, _ in pairs(values) do
+      table.insert(result, k)
+   end
+
+   return result
+end
+
 function util.map_is_empty<K, V>(values:{K:V}):boolean
    for _, _ in pairs(values) do
       return false
