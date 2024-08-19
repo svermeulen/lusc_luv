@@ -6,3 +6,7 @@
 /luarocks
 /luarocks_tree
 /lua
+
+# install dirs on CI machine
+/.install
+/.lua
