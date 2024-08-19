@@ -2245,8 +2245,6 @@ function lusc.start(opts)
    util.assert(lusc._current_runner == nil, "Cannot call lusc.run from within another lusc.run")
    lusc._current_runner = lusc._Runner.new(new_opts)
    lusc._current_runner:_start()
-
-   lusc.jurb = 5
 end
 
 return lusc
