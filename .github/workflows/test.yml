@@ -31,3 +31,13 @@ jobs:
 
       - name: Test
         run: scripts/run_tests.sh
+
+      - name: Check for untracked or modified files
+        run: |
+          if [ -n "$(git status --porcelain)" ]; then
+            echo "Error: Untracked or modified files found."
+            git status
+            exit 1
+          else
+            echo "No untracked or modified files."
+          fi
