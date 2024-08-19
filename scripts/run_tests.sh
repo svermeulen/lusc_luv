@@ -1,11 +1,11 @@
 #!/bin/bash
 set -e
 
-./setup_local_luarocks.sh
-./generate_lua.sh
-
 # Navigate to the root of the repo
 cd "$(dirname "$0")/.."
+
+./scripts/setup_local_luarocks.sh
+./scripts/generate_lua.sh
 
 # Set the local LuaRocks tree paths
 REPO_ROOT="$(pwd)"
