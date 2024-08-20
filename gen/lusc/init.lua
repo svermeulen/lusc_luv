@@ -2150,6 +2150,10 @@ function lusc.stop_requested()
    return lusc._get_runner():_stop_requested()
 end
 
+function lusc.set_log_handler(log_handler)
+   util.set_log_handler(log_handler)
+end
+
 function lusc.stop(opts)
    lusc._get_runner():_stop(opts)
 end
