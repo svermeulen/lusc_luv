@@ -205,6 +205,8 @@ local record lusc
    force_unavailable:function<T>(handler:function():T):T
    force_unavailable_wrap:function(handler:function()):function()
 
+   -- Pass in a custom log handler to enable logging
+   -- Note that this produces a lot of logs so should only be used temporarily
    set_log_handler:function(function(message:string))
 
    set_impl:function(any)
