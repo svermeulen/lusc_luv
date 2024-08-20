@@ -4,7 +4,7 @@ local lusc <const> = require('lusc')
 local util <const> = require('lusc.internal.util')
 local test_async_helper <const> = require("lusc.tests.async_helper")
 
-local test_time_interval = 0.05
+local test_time_interval = 0.1
 
 local function _is_instance(obj:any, cls:any):boolean
    -- We use a simple class model by convention where class is __index

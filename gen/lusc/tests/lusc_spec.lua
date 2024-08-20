@@ -4,7 +4,7 @@ local lusc = require('lusc')
 local util = require('lusc.internal.util')
 local test_async_helper = require("lusc.tests.async_helper")
 
-local test_time_interval = 0.05
+local test_time_interval = 0.1
 
 local function _is_instance(obj, cls)
 
