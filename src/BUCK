@@ -1,0 +1,12 @@
+
+load("//bucktools/teal/defs.bzl", "teal_library")
+
+teal_library(
+    name = "lusc_luv",
+    srcs = glob(["lusc/**/*"], exclude = ["lusc/tests/**/*"]),
+    deps = [
+        "//ext/luv:luv",
+    ],
+    visibility = ["PUBLIC"],
+)
+
